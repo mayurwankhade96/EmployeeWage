@@ -15,18 +15,19 @@ namespace EmployeeWageComputation
         {
             Random random = new Random();
             int empCheck = random.Next(0, 3);
-            if (empCheck == isFullTime)
+            switch (empCheck)
             {
-                empHour = 8;
+                case isFullTime :
+                    empHour = 8;
+                    break;
+                case isPartTime :
+                    empHour = 4;
+                    break;
+                default:
+                    empHour = 0;
+                    break;
             }
-            else if (empCheck == isPartTime)
-            {
-                empHour = 4;
-            }
-            else
-            {
-                empHour = 0;
-            }
+
             int dailyWage = empHour * empRatePerHour;
             Console.WriteLine(dailyWage);
         }
