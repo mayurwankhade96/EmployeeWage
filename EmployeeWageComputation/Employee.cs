@@ -33,7 +33,7 @@ namespace EmployeeWageComputation
                         break;
                 }
                 int dailyWage = empHour * empRatePerHour;
-                totalSalaryForMonth= totalSalaryForMonth + dailyWage ;
+                totalSalaryForMonth = totalSalaryForMonth + dailyWage ;
             }
             Console.WriteLine(totalSalaryForMonth);
         }
