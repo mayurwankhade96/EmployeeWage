@@ -9,14 +9,18 @@ namespace EmployeeWageComputation
         const int isFullTime = 1;
         const int isPartTime = 2;
         public int empRatePerHour = 20;
-        public int empHour = 0;
         public int workingDaysPerMonth = 20;
         public int totalSalaryForMonth = 0;
-        
+        public int totalWorkingHour = 100;
+        public int empHour = 0;
+
+        public int totalWorkingHours = 0;
+        public int workingDays = 0;
         public void Attendence() 
         {
-            for (int day = 1; day <= workingDaysPerMonth; day++)
+            while ( empHour < totalWorkingHour && workingDays < workingDaysPerMonth )
             {
+                workingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
 
@@ -32,10 +36,10 @@ namespace EmployeeWageComputation
                         empHour = 0;
                         break;
                 }
-                int dailyWage = empHour * empRatePerHour;
-                totalSalaryForMonth = totalSalaryForMonth + dailyWage ;
+                totalWorkingHour += empHour;
             }
-            Console.WriteLine(totalSalaryForMonth);
+            int salary = totalWorkingHour * empRatePerHour;
+            Console.WriteLine(salary);
         }
     }
 }
