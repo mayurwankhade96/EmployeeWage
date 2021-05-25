@@ -6,22 +6,29 @@ namespace EmployeeWageComputation
 {
     public class Employee
     {
-        const int isPresent = 1;
-        public int empHour = 8;
+        const int isFullTime = 1;
+        const int isPartTime = 2;
         public int empRatePerHour = 20;
-
+        public int empHour = 0;
+        
         public void Attendence() 
         {
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck == isPresent)
+            int empCheck = random.Next(0, 3);
+            if (empCheck == isFullTime)
             {
-                int dailyWage = empHour * empRatePerHour;
-                Console.WriteLine("Per day salary = " + dailyWage);
+                empHour = 8;
+            }
+            else if (empCheck == isPartTime)
+            {
+                empHour = 4;
             }
             else
-                Console.WriteLine("Per day salary = " + 0);
+            {
+                empHour = 0;
+            }
+            int dailyWage = empHour * empRatePerHour;
+            Console.WriteLine(dailyWage);
         }
-
     }
 }
