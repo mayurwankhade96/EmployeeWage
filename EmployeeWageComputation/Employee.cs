@@ -16,9 +16,9 @@ namespace EmployeeWageComputation
 
         public int totalWorkingHours = 0;
         public int workingDays = 0;
-        public void Attendence() 
+        public void WageCalculation() 
         {
-            while ( empHour < totalWorkingHour && workingDays < workingDaysPerMonth )
+            while ( empHour <= totalWorkingHour && workingDays < workingDaysPerMonth )
             {
                 workingDays++;
                 Random random = new Random();
