@@ -4,21 +4,24 @@ using System.Text;
 
 namespace EmployeeWageComputation
 {
-    public class Employee
+    public class EmployeeWrkHr
     {
-        const int isFullTime = 1;
-        const int isPartTime = 2;
-        public int empRatePerHour = 20;
-        public int workingDaysPerMonth = 20;
-        public int totalSalaryForMonth = 0;
-        public int totalWorkingHour = 100;
-        public int empHour = 0;
+        //Constants
+        public const int IS_FULL_Time = 1;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_RATE_PER_HR = 20;
+        public const int WORKING_DAYS_PER_MNTH = 20;
+        public const int TOTAL_WORKING_HR = 100;
 
-        public int totalWorkingHours = 0;
+        //Variables
+        public int empHour = 0;
         public int workingDays = 0;
-        public void WageCalculation() 
+        public int totalWorkingHours = 0;
+
+        // Method to calculate total working hours
+        public void WorkHour() 
         {
-            while ( empHour <= totalWorkingHour && workingDays < workingDaysPerMonth )
+            while ( empHour <= TOTAL_WORKING_HR && workingDays < WORKING_DAYS_PER_MNTH )
             {
                 workingDays++;
                 Random random = new Random();
@@ -26,20 +29,32 @@ namespace EmployeeWageComputation
 
                 switch (empCheck)
                 {
-                    case isFullTime:
+                    case IS_FULL_Time:
                         empHour = 8;
                         break;
-                    case isPartTime:
+
+                    case IS_PART_TIME:
                         empHour = 4;
                         break;
+
                     default:
                         empHour = 0;
                         break;
                 }
-                totalWorkingHour += empHour;
-            }
-            int salary = totalWorkingHour * empRatePerHour;
-            Console.WriteLine(salary);
+                totalWorkingHours += empHour;                
+            }            
         }
+    }
+
+    // Wage class inherits EmployeeWrkHr class
+    public class Wage : EmployeeWrkHr
+    {
+        // Method to calculate salary
+        public void Salary()
+        {
+            WorkHour();
+            int salary = totalWorkingHours * EMP_RATE_PER_HR;
+            Console.WriteLine("Wage of employee : " + salary);
+        }                            
     }
 }

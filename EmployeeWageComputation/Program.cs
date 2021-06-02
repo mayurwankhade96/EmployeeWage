@@ -7,8 +7,9 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
-            Employee employee = new Employee();
-            employee.WageCalculation();
+
+            Wage W = new Wage();
+            W.Salary();
         }
     }
 }
