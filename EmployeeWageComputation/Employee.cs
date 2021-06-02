@@ -45,8 +45,7 @@ namespace EmployeeWageComputation
             }            
         }
     }
-
-    // Wage class inherits EmployeeWrkHr class
+    
     public class Wage : EmployeeWrkHr
     {
         // Method to calculate salary
