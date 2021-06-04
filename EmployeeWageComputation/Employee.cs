@@ -4,26 +4,29 @@ using System.Text;
 
 namespace EmployeeWageComputation
 {
-    public class EmployeeWrkHr
+    public class EmployeeWage
     {
         //Constants
         public const int IS_FULL_Time = 1;
-        public const int IS_PART_TIME = 2;
-        public const int EMP_RATE_PER_HR = 20;
-        public const int WORKING_DAYS_PER_MNTH = 20;
-        public const int TOTAL_WORKING_HR = 100;
+        public const int IS_PART_TIME = 2;        
 
         //Variables
         public int empHour = 0;
-        public int workingDays = 0;
+        public int totalWorkingDays = 0;
         public int totalWorkingHours = 0;
-
-        // Method to calculate total working hours
-        public void WorkHour() 
+        
+        /// <summary>
+        /// Method  to calculate salary
+        /// </summary>
+        /// <param name="company"></param>
+        /// <param name="empRatePerHour"></param>
+        /// <param name="workingDaysPerMonth"></param>
+        /// <param name="workingHourPerMonth"></param>
+        public void WageCalculation(string company, int empRatePerHour, int workingDaysPerMonth, int workingHourPerMonth) 
         {
-            while ( empHour <= TOTAL_WORKING_HR && workingDays < WORKING_DAYS_PER_MNTH )
+            while ( empHour <= workingHourPerMonth && totalWorkingDays < workingDaysPerMonth )
             {
-                workingDays++;
+                totalWorkingDays++;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
 
@@ -42,18 +45,9 @@ namespace EmployeeWageComputation
                         break;
                 }
                 totalWorkingHours += empHour;                
-            }            
+            }
+            int salary = totalWorkingHours * empRatePerHour;
+            Console.WriteLine("company : " + company + ", Salary : " + salary);
         }
-    }
-    
-    public class Wage : EmployeeWrkHr
-    {
-        // Method to calculate salary
-        public void Salary()
-        {
-            WorkHour();
-            int salary = totalWorkingHours * EMP_RATE_PER_HR;
-            Console.WriteLine("Wage of employee : " + salary);
-        }                            
-    }
+    }        
 }

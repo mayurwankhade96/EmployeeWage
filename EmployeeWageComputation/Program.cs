@@ -8,8 +8,9 @@ namespace EmployeeWageComputation
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
 
-            Wage W = new Wage();
-            W.Salary();
+            EmployeeWage wage = new EmployeeWage();
+            wage.WageCalculation("MSEB", 50, 20, 100);            
+            wage.WageCalculation("Google", 100, 20, 100);
         }
     }
 }
