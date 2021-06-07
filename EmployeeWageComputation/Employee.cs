@@ -8,23 +8,39 @@ namespace EmployeeWageComputation
     {
         //Constants
         public const int IS_FULL_Time = 1;
-        public const int IS_PART_TIME = 2;        
+        public const int IS_PART_TIME = 2;
 
-        //Variables
-        public int empHour = 0;
-        public int totalWorkingDays = 0;
-        public int totalWorkingHours = 0;
-        
+        // private variables declared
+        private string _company;
+        private int _empRatePrHr;
+        private int _numOfWrkngDays;
+        private int _maxHoursPrMonth;
+        private int _totalEmpWage;
+
         /// <summary>
-        /// Method  to calculate salary
+        /// create a class constructor for the EmployeeWage class
         /// </summary>
         /// <param name="company"></param>
-        /// <param name="empRatePerHour"></param>
-        /// <param name="workingDaysPerMonth"></param>
-        /// <param name="workingHourPerMonth"></param>
-        public void WageCalculation(string company, int empRatePerHour, int workingDaysPerMonth, int workingHourPerMonth) 
+        /// <param name="empRatePrHr"></param>
+        /// <param name="numOfWrkngDays"></param>
+        /// <param name="maxHoursPrMonth"></param>
+        public EmployeeWage(string company, int empRatePrHr, int numOfWrkngDays, int maxHoursPrMonth)
         {
-            while ( empHour <= workingHourPerMonth && totalWorkingDays < workingDaysPerMonth )
+            this._company = company;
+            this._empRatePrHr = empRatePrHr;
+            this._numOfWrkngDays = numOfWrkngDays;
+            this._maxHoursPrMonth = maxHoursPrMonth;
+        }
+
+        /// <summary>
+        /// method to calculate Wage
+        /// </summary>
+        public void WageCalculation() 
+        {
+            // variables
+            int empHours = 0, totalEmpHours = 0, totalWorkingDays = 0;
+
+            while ( empHours <= this._maxHoursPrMonth && totalWorkingDays < this._numOfWrkngDays )
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -33,21 +49,27 @@ namespace EmployeeWageComputation
                 switch (empCheck)
                 {
                     case IS_FULL_Time:
-                        empHour = 8;
+                        empHours = 8;
                         break;
 
                     case IS_PART_TIME:
-                        empHour = 4;
+                        empHours = 4;
                         break;
 
                     default:
-                        empHour = 0;
+                        empHours = 0;
                         break;
                 }
-                totalWorkingHours += empHour;                
+                totalEmpHours += empHours;
+                Console.WriteLine("Day Number : " + totalWorkingDays + " Employee Hours : " + empHours); ;
             }
-            int salary = totalWorkingHours * empRatePerHour;
-            Console.WriteLine("company : " + company + ", Salary : " + salary);
+            this._totalEmpWage = totalEmpHours * this._empRatePrHr;
+            Console.WriteLine("Total Employee Wage for company " + this._company + " is " + this._totalEmpWage);
+        }
+        
+        public string toString()
+        {
+            return "Total Employee Wage for company " + this._company + " is " + this._totalEmpWage;
         }
     }        
 }
